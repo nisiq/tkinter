@@ -1,3 +1,10 @@
+#MAIN
+from tkinterx import aplication
+
+jan = aplication()
+
+
+
 from tkinter import *
 from tkinter import ttk
 from create import inserir_filmes, inserir_usuarios
