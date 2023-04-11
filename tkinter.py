@@ -1,13 +1,6 @@
-#MAIN:
-
-from tkinterx import aplication
-
-jan = aplication()
-
-#TKINTERX:
-
 from tkinter import *
 from tkinter import ttk
+from create import inserir_filmes, inserir_usuarios
 
 janela = Tk()
 
@@ -27,20 +20,20 @@ class aplication():
 
     def tela(self):
         self.janela.title('NETFLIX')
-        self.janela.configure(background='#bfddf3')
+        self.janela.configure(background='#ee82ee')
         self.janela.geometry('700x500')
         self.janela.resizable(True, True)
         self.janela.maxsize(width=700, height=500)
     def frames(self):
-        self.frame0 = Frame(self.janela, bg='#9c9a92')
+        self.frame0 = Frame(self.janela, bg='#bfddf3')
         self.frame0.place(relx = 0.03, rely=0.03,
                          relwidth=0.94, relheight=0.11)
 
-        self.frame1 = Frame(self.janela, bg='#9c9a92')
+        self.frame1 = Frame(self.janela, bg='#bfddf3')
         self.frame1.place(relx= 0.03, rely=0.20,
                          relwidth=0.94, relheight=0.25)
 
-        self.frame2 = Frame(self.janela, bg='#9c9a92')
+        self.frame2 = Frame(self.janela, bg='#bfddf3')
         self.frame2.place(relx= 0.03, rely=0.50,
                          relwidth=0.94, relheight=0.45)
 
@@ -51,7 +44,7 @@ class aplication():
         self.btLimpar = Button(self.frame0, text='Limpar')
         self.btLimpar.place(relx=0.27, rely=0.40, relwidth=0.1, relheight=0.50)
 
-        self.btCreate = Button(self.frame0, text='Create')
+        self.btCreate = Button(self.frame0, text='Create', command=self.insert_user)
         self.btCreate.place(relx=0.45, rely=0.40, relwidth=0.1, relheight=0.50)
 
         self.btRead = Button(self.frame0, text='Read')
@@ -64,27 +57,27 @@ class aplication():
         self.btDelete.place(relx=0.81, rely=0.40, relwidth=0.1, relheight=0.50)
 
     def labels(self):
-        self.lbIDUsuario = Label(self.frame0, text='ID', bg='#9c9a92')
+        self.lbIDUsuario = Label(self.frame0, text='ID', bg='#bfddf3')
         self.lbIDUsuario.place(relx=0.005, rely=0.01,
                                relwidth=0.1, relheight=0.3)
 
-        self.lbNome = Label(self.frame1, text='Nome', bg='#9c9a92')
+        self.lbNome = Label(self.frame1, text='Nome', bg='#bfddf3')
         self.lbNome.place(relx=0.005, rely=0.06,
                                relwidth=0.1, relheight=0.15)
 
-        self.lbEmail = Label(self.frame1, text='Email', bg='#9c9a92')
+        self.lbEmail = Label(self.frame1, text='Email', bg='#bfddf3')
         self.lbEmail.place(relx=0.005, rely=0.37,
                           relwidth=0.1, relheight=0.15)
 
-        self.lbPlano = Label(self.frame1, text='Plano', bg='#9c9a92')
+        self.lbPlano = Label(self.frame1, text='Plano', bg='#bfddf3')
         self.lbPlano.place(relx=0.005, rely=0.69,
                           relwidth=0.1, relheight=0.15)
 
-        self.lbTipo = Label(self.frame1, text='Tipo', bg='#9c9a92')
+        self.lbTipo = Label(self.frame1, text='Tipo', bg='#bfddf3')
         self.lbTipo.place(relx=0.32, rely=0.69,
                            relwidth=0.1, relheight=0.15)
 
-        self.lbIdade = Label(self.frame1, text='Idade', bg='#9c9a92')
+        self.lbIdade = Label(self.frame1, text='Idade', bg='#bfddf3')
         self.lbIdade.place(relx=0.62, rely=0.69,
                           relwidth=0.1, relheight=0.15)
 
@@ -140,3 +133,7 @@ class aplication():
         self.scrollista=Scrollbar(self.frame2, orient='vertical')
         self.listaCli.configure(yscrollcommand=self.scrollista.set)
         self.scrollista.place(relx=0.96, rely=0.1, relwidth=0.04, relheight=0.85)
+
+    def insert_user(self):
+        inserir_usuarios(self.inpNome.get(), self.inpEmail.get(), self.inpPlano.get(),
+                         self.inpTipo.get(), self.inpIdade.get())
